@@ -419,21 +419,63 @@ function readFiles(files, multi, cb) {
   var list = Array.from(files).filter(function(f){ return f.type.startsWith('image/'); });
   if (!multi) list = list.slice(0, 1);
   if (!list.length) return;
-  var results = [], done = 0;
+
+  var results = [];
+  var done    = 0;
+  var total   = list.length;
+
   list.forEach(function(f){
-    if (f.size > 3 * 1024 * 1024) { toast('Image too large (max 3MB).', 'error'); done++; return; }
-    var r = new FileReader();
-    r.onload = function(e){
-      results.push(e.target.result);
+    if (f.size > 10 * 1024 * 1024) {
+      toast('Image too large (max 10MB per image).', 'error');
       done++;
-      if (done === list.length && results.length) {
-        if (multi) cb(results);
-        else cb(results[0]);
-      }
+      if (done === total && results.length) multi ? cb(results) : cb(results[0]);
+      return;
+    }
+    var reader = new FileReader();
+    reader.onload = function(e){
+      // Compress image via canvas before storing
+      compressImage(e.target.result, function(compressed){
+        results.push(compressed);
+        done++;
+        if (done === total && results.length) {
+          if (multi) cb(results);
+          else cb(results[0]);
+        }
+      });
     };
-    r.readAsDataURL(f);
+    reader.readAsDataURL(f);
   });
 }
+
+// Compress image using Canvas (reduces storage size dramatically)
+function compressImage(dataUrl, callback) {
+  var img = new Image();
+  img.onload = function(){
+    var MAX_W = 1200, MAX_H = 1200;
+    var w = img.width, h = img.height;
+    // Scale down if larger than max dimensions
+    if (w > MAX_W || h > MAX_H) {
+      if (w / h > MAX_W / MAX_H) {
+        h = Math.round(h * MAX_W / w);
+        w = MAX_W;
+      } else {
+        w = Math.round(w * MAX_H / h);
+        h = MAX_H;
+      }
+    }
+    var canvas = document.createElement('canvas');
+    canvas.width  = w;
+    canvas.height = h;
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, w, h);
+    // Output as JPEG at 72% quality — greatly reduces size
+    var compressed = canvas.toDataURL('image/jpeg', 0.72);
+    callback(compressed);
+  };
+  img.onerror = function(){ callback(dataUrl); }; // fallback: use original
+  img.src = dataUrl;
+}
+
 
 function renderGallery() {
   var c = document.getElementById('gallery-preview');

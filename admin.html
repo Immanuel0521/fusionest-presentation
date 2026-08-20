@@ -544,11 +544,11 @@
 
         <!-- Featured image upload -->
         <div class="form-group full">
-          <label class="form-label">Featured Image</label>
+          <label class="form-label">Featured Image <span style="color:var(--text-muted);font-weight:400;">(Optional)</span></label>
           <div class="upload-area" id="featured-upload-area">
             <div class="upload-icon">🖼️</div>
             <div class="upload-text">Drop image here or <strong>click to browse</strong></div>
-            <div class="upload-hint">JPG, PNG, WEBP — max 5MB</div>
+            <div class="upload-hint">JPG, PNG, WEBP — max 10MB — auto-compressed on save</div>
           </div>
           <input type="file" id="featured-file" accept="image/*" style="display:none;" />
           <div id="featured-preview" style="margin-top:12px;display:none;">
@@ -560,11 +560,11 @@
 
         <!-- Gallery upload -->
         <div class="form-group full">
-          <label class="form-label">Project Gallery (Multiple Images)</label>
+          <label class="form-label">Project Gallery <span style="color:var(--text-muted);font-weight:400;">(Optional — add as many or as few as you like)</span></label>
           <div class="upload-area" id="gallery-upload-area">
             <div class="upload-icon">📷</div>
-            <div class="upload-text">Drop multiple images here or <strong>click to browse</strong></div>
-            <div class="upload-hint">JPG, PNG, WEBP — up to 20 images</div>
+            <div class="upload-text">Drop images here or <strong>click to browse</strong></div>
+            <div class="upload-hint">1 to 20 images — JPG, PNG, WEBP — auto-compressed on save</div>
           </div>
           <input type="file" id="gallery-file" accept="image/*" multiple style="display:none;" />
           <div class="image-preview-grid" id="gallery-preview"></div>
