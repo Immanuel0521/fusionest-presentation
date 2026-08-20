@@ -521,41 +521,53 @@ function initProjects() {
       modal.classList.remove('open');
     }
   });
+
+  // Auto-refresh when admin saves (listens for localStorage signal)
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'fn_projects_updated') {
+      const activeFilter = document.querySelector('.filter-btn.active');
+      loadProjects(activeFilter ? activeFilter.dataset.filter : 'all');
+    }
+  });
+  // Refresh when user switches back to this tab
+  window.addEventListener('focus', () => {
+    const activeFilter = document.querySelector('.filter-btn.active');
+    loadProjects(activeFilter ? activeFilter.dataset.filter : 'all');
+  });
 }
 
-function getProjects() {
-  try {
-    return JSON.parse(localStorage.getItem('fn_projects') || '[]');
-  } catch { return []; }
-}
+
+
 
 function loadProjects(filter) {
   const grid  = document.getElementById('projects-grid');
   const empty = document.getElementById('projects-empty');
   if (!grid) return;
 
-  let projects = getProjects().filter(p => p.published !== false);
-  if (filter !== 'all') projects = projects.filter(p => p.category === filter);
+  getProjectsFromDB(function(allProjects) {
+    let projects = allProjects.filter(p => p.published !== false);
+    if (filter && filter !== 'all') projects = projects.filter(p => p.category === filter);
 
-  // Clear existing cards (keep the empty state div)
-  Array.from(grid.children).forEach(c => { if (c.id !== 'projects-empty') c.remove(); });
+    // Clear existing cards
+    Array.from(grid.children).forEach(c => { if (c.id !== 'projects-empty') c.remove(); });
 
-  if (!projects.length) {
-    empty && (empty.style.display = 'block');
-    return;
-  }
-  empty && (empty.style.display = 'none');
+    if (!projects.length) {
+      empty && (empty.style.display = 'block');
+      return;
+    }
+    empty && (empty.style.display = 'none');
 
-  projects.forEach((p, i) => {
-    const card = createProjectCard(p, i);
-    grid.appendChild(card);
+    projects.forEach((p, i) => {
+      const card = createProjectCard(p, i);
+      grid.appendChild(card);
+    });
+
+    // Animate cards in
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('reveal-card'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    grid.querySelectorAll('.project-card').forEach(c => obs.observe(c));
   });
-
-  // Re-observe new cards
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('reveal-card'); obs.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  grid.querySelectorAll('.project-card').forEach(c => obs.observe(c));
 }
 
 function createProjectCard(p, idx) {
@@ -763,6 +775,31 @@ function initContactForm() {
 function initModelScroll() {
   initDragScroll('models-track-wrap');
 }
+
+// ── INDEXEDDB (shared with admin) ───────────────────────────
+var _mainDB = null;
+function openMainDB(cb) {
+  if (_mainDB) { cb(_mainDB); return; }
+  var req = indexedDB.open('fusionest_db', 1);
+  req.onupgradeneeded = function(e) {
+    var db = e.target.result;
+    if (!db.objectStoreNames.contains('projects')) {
+      db.createObjectStore('projects', { keyPath: 'id' });
+    }
+  };
+  req.onsuccess = function(e) { _mainDB = e.target.result; cb(_mainDB); };
+  req.onerror   = function()  { cb(null); };
+}
+
+function getProjectsFromDB(callback) {
+  openMainDB(function(db) {
+    if (!db) { callback([]); return; }
+    var req = db.transaction('projects', 'readonly').objectStore('projects').getAll();
+    req.onsuccess = function() { callback(req.result || []); };
+    req.onerror   = function() { callback([]); };
+  });
+}
+
 
 // ── UTILS ─────────────────────────────────────────────────────
 function escHtml(str) {
