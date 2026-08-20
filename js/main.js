@@ -151,6 +151,20 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initModelScroll();
   initFilterDrag();
+
+  // Auto-refresh projects when admin saves (cross-tab localStorage change)
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'fn_projects') {
+      const activeFilter = document.querySelector('.filter-btn.active');
+      loadProjects(activeFilter ? activeFilter.dataset.filter : 'all');
+    }
+  });
+
+  // Also refresh when user switches back to this tab from admin
+  window.addEventListener('focus', () => {
+    const activeFilter = document.querySelector('.filter-btn.active');
+    loadProjects(activeFilter ? activeFilter.dataset.filter : 'all');
+  });
 });
 
 // ── LOADER ────────────────────────────────────────────────────

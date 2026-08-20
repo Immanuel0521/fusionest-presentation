@@ -7,29 +7,32 @@
 
 /* ── CSS VARIABLES ─────────────────────────────────────────── */
 :root {
-  /* Colors */
-  --bg-deep:      #05050D;
-  --bg-surface:   #09091A;
-  --bg-card:      rgba(255,255,255,0.03);
-  --bg-card-hover:rgba(255,255,255,0.06);
-  --glass:        rgba(10,10,30,0.6);
-  --glass-border: rgba(200,169,110,0.15);
-  --glass-hover:  rgba(200,169,110,0.25);
+  /* Colors — FUSIONest Brand */
+  --bg-deep:      #080E09;
+  --bg-surface:   #0C1410;
+  --bg-card:      rgba(255,255,255,0.04);
+  --bg-card-hover:rgba(255,255,255,0.07);
+  --glass:        rgba(8,14,9,0.7);
+  --glass-border: rgba(196,82,42,0.18);
+  --glass-hover:  rgba(196,82,42,0.28);
 
-  /* Accent */
-  --gold:         #C8A96E;
-  --gold-light:   #E2C98E;
-  --gold-dim:     rgba(200,169,110,0.15);
-  --gold-glow:    rgba(200,169,110,0.3);
-  --steel:        #4A9EDB;
-  --steel-dim:    rgba(74,158,219,0.2);
-  --green:        #5DB87A;
+  /* Brand Accent — Terracotta ("Nest") */
+  --gold:         #C4522A;
+  --gold-light:   #D9693F;
+  --gold-dim:     rgba(196,82,42,0.14);
+  --gold-glow:    rgba(196,82,42,0.32);
+
+  /* Brand Green — Forest ("FUSIO") */
+  --steel:        #2D6A35;
+  --steel-dim:    rgba(45,106,53,0.2);
+  --steel-light:  #4B9A55;
+  --green:        #4B9A55;
 
   /* Text */
   --text-primary: #F0F0EC;
   --text-secondary:#9A9AAA;
-  --text-muted:   #5A5A6A;
-  --text-gold:    #C8A96E;
+  --text-muted:   #5A6A5C;
+  --text-gold:    #C4522A;
 
   /* Typography */
   --font:         'Sora', sans-serif;
@@ -128,14 +131,12 @@ ul { list-style: none; }
   box-shadow: 0 8px 40px rgba(0,0,0,0.4);
 }
 .nav-logo {
-  font-size: 1.2rem; font-weight: 700; letter-spacing: 0.12em;
-  color: var(--gold); display: flex; align-items: center; gap: 8px;
+  font-size: 1.2rem; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--steel); display: flex; align-items: center; gap: 10px;
 }
-.nav-logo span { color: var(--text-primary); }
-.nav-logo-mark {
-  width: 32px; height: 32px; background: var(--gold);
-  border-radius: 6px; display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem; font-weight: 800; color: var(--bg-deep);
+.nav-logo span { color: var(--gold); }
+.nav-logo-img {
+  height: 36px; width: auto; display: block; object-fit: contain;
 }
 .nav-links {
   display: flex; gap: 36px; align-items: center;
@@ -287,7 +288,9 @@ section { position: relative; overflow: hidden; }
   color: var(--text-primary); margin-bottom: 8px;
   animation: fadeInUp 0.8s 0.7s both;
 }
-.hero-title .line2 { color: var(--gold); display: block; }
+.hero-title .fusio { color: var(--steel-light); }
+.hero-title .nest  { color: var(--gold); }
+.hero-title .line2 { display: block; }
 .hero-sub {
   font-size: clamp(0.85rem, 2vw, 1.05rem);
   letter-spacing: 0.3em; text-transform: uppercase;
