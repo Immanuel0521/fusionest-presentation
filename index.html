@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FUSIONest — Prefab Construction | We Build Spaces Differently</title>
+  <meta name="description" content="FUSIONest is Hyderabad's premium prefab and modular construction company. Engineered. Installed. Delivered. Homes, farmhouses, resorts, offices and commercial spaces." />
+  <meta name="keywords" content="prefab homes Hyderabad, modular construction, prefabricated homes, FUSIONest, site construction, farmhouse, resort construction" />
+  <meta property="og:title" content="FUSIONest — We Build Spaces Differently" />
+  <meta property="og:description" content="Premium prefab & modular construction. Engineered precision. On-site installation. Delivered on time." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fusionest.com" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Sora Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" defer></script>
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LOADING SCREEN
+═══════════════════════════════════════════════════════════ -->
+<div id="loader" aria-label="Loading FUSIONest experience">
+  <div class="loader-grid"></div>
+  <div class="loader-logo">FUSIONEST</div>
+  <div class="loader-sub">Engineered · Installed · Delivered</div>
+  <div class="loader-bar-track">
+    <div class="loader-bar" id="loader-bar"></div>
+  </div>
+  <div class="loader-pct" id="loader-pct">0%</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════════════════ -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <a href="#hero" class="nav-logo" aria-label="FUSIONest Home">
+    <div class="nav-logo-mark">F</div>
+    FUSION<span>est</span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#about-intro" aria-label="About">About</a></li>
+    <li><a href="#wall-system" aria-label="Wall System">Wall System</a></li>
+    <li><a href="#stages" aria-label="Stages">How We Build</a></li>
+    <li><a href="#projects" aria-label="Projects">Projects</a></li>
+    <li><a href="#solutions" aria-label="Solutions">Solutions</a></li>
+    <li><a href="#contact" aria-label="Contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <button class="nav-presentation-btn" id="enter-presentation" aria-label="Enter Client Presentation Mode">⬛ Present</button>
+    <a href="#contact" class="nav-cta" aria-label="Start your project">Start Project</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">✕</button>
+  <a href="#about-intro" class="mobile-link">About</a>
+  <a href="#wall-system" class="mobile-link">Wall System</a>
+  <a href="#stages" class="mobile-link">How We Build</a>
+  <a href="#projects" class="mobile-link">Projects</a>
+  <a href="#solutions" class="mobile-link">Solutions</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact" class="btn-primary" style="margin-top:16px;">Start Project</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════════════════════ -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-bg-img" role="img" aria-label="Cinematic architectural background"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Premium Prefab &amp; Modular Construction · Hyderabad
+    </div>
+    <h1 class="hero-title">
+      WE BUILD SPACES<br>
+      <span class="line2">DIFFERENTLY.</span>
+    </h1>
+    <p class="hero-sub">Engineered &nbsp;·&nbsp; Installed &nbsp;·&nbsp; Delivered</p>
+    <div class="hero-ctas">
+      <a href="#about-intro" class="btn-primary" id="hero-explore">
+        Explore FUSIONest
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#projects" class="btn-secondary" id="hero-projects">
+        View Projects
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+      </a>
+      <a href="#contact" class="btn-ghost" id="hero-start">
+        Start Your Project →
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     ABOUT INTRO
+═══════════════════════════════════════════════════════════ -->
+<section id="about-intro" aria-labelledby="about-intro-title">
+  <div class="container">
+    <div class="about-intro-grid">
+      <div class="about-intro-visual reveal-left">
+        <img src="assets/images/building_exterior.jpg"
+             alt="Modern FUSIONest prefab building exterior with structural steel frame"
+             class="about-intro-img" loading="lazy" />
+        <div class="about-intro-badge">
+          <strong>23+</strong>
+          <span>Years in Prefab Construction</span>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title" id="about-intro-title">
+          We reimagine<br/><em>how spaces are built.</em>
+        </h2>
+        <div class="divider"></div>
+        <p class="section-sub">
+          At FUSIONest, we engineer modern living and working spaces that combine
+          thoughtful design, efficient on-site construction, and long-term sustainability.
+          Every project is a precise system — from structural frame to finished interior.
+        </p>
+        <div class="about-values mt-40">
+          <div class="value-item">
+            <div class="value-icon" aria-hidden="true">⚡</div>
+            <div class="value-text">
+              <strong>Quick Installation</strong>
+              <p>Significantly faster than conventional construction methods.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon" aria-hidden="true">🎨</div>
+            <div class="value-text">
+              <strong>Customizable Designs</strong>
+              <p>Fully adaptable to your vision, style and site requirements.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon" aria-hidden="true">🌿</div>
+            <div class="value-text">
+              <strong>Eco-Friendly Construction</strong>
+              <p>Reduced waste, lower site disruption, sustainable materials.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon" aria-hidden="true">🔩</div>
+            <div class="value-text">
+              <strong>Engineering Precision</strong>
+              <p>Every component designed, detailed and installed with purpose.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     WALL SYSTEM — INTERACTIVE CUTAWAY
+═══════════════════════════════════════════════════════════ -->
+<section id="wall-system" aria-labelledby="wall-title">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:60px;">
+      <div class="section-label">Engineering Detail</div>
+      <h2 class="section-title" id="wall-title">The <em>Wall System</em></h2>
+      <p class="section-sub" style="margin: 16px auto 0;">
+        Click each layer to explore the engineered wall assembly used in FUSIONest structures.
+      </p>
+    </div>
+
+    <div class="wall-system-grid">
+      <!-- Info panel (sticky) -->
+      <div class="wall-section-info reveal-left">
+        <div class="wall-info-panel" id="wall-info-panel">
+          <div class="wall-info-layer-num" id="wip-num">LAYER 01 · EXTERNAL FINISH</div>
+          <div class="wall-info-name" id="wip-name">External Finish</div>
+          <div class="wall-info-desc" id="wip-desc">
+            The outermost face of the FUSIONest wall system. Weather-resistant exterior finish provides
+            durability, aesthetic quality, and protection against the elements.
+          </div>
+          <div class="wall-info-specs" id="wip-specs">
+            <div class="wall-spec-row">
+              <span class="wall-spec-label">Function</span>
+              <span class="wall-spec-value">Weather Protection</span>
+            </div>
+            <div class="wall-spec-row">
+              <span class="wall-spec-label">Location</span>
+              <span class="wall-spec-value">Outermost Layer</span>
+            </div>
+            <div class="wall-spec-row">
+              <span class="wall-spec-label">Materials</span>
+              <span class="wall-spec-value">Exterior Grade Paint / Texture</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual bar representation -->
+        <div class="wall-visual-bar" id="wall-visual-bar" style="margin-top:24px;" aria-hidden="true">
+          <div class="wall-visual-segment active" data-seg="1" style="background:#8B9DC3;" title="External Finish"></div>
+          <div class="wall-visual-segment" data-seg="2" style="background:#E8C99A;" title="Cement Fibre Board"></div>
+          <div class="wall-visual-segment" data-seg="3" style="background:rgba(150,200,255,0.5);" title="Vapour Barrier"></div>
+          <div class="wall-visual-segment" data-seg="4" style="background:#F5A623;" title="Rockwool Insulation"></div>
+          <div class="wall-visual-segment" data-seg="5" style="background:#9B6B9B;" title="MEP Services"></div>
+          <div class="wall-visual-segment" data-seg="6" style="background:#7EB8D4;" title="GI Wall Framing"></div>
+          <div class="wall-visual-segment" data-seg="7" style="background:#C8D8A0;" title="MS Structural Frame"></div>
+        </div>
+        <p style="font-size:0.65rem;color:var(--text-muted);margin-top:10px;text-align:center;letter-spacing:0.1em;">← EXTERIOR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INTERIOR →</p>
+      </div>
+
+      <!-- Layers list -->
+      <div class="reveal-right">
+        <div class="wall-layers-wrapper" id="wall-layers" role="list" aria-label="Wall system layers">
+
+          <div class="wall-layer active" data-layer="1" role="listitem" tabindex="0"
+               aria-label="Layer 1: External Finish - click for details">
+            <div class="wall-layer-swatch"></div>
+            <div class="wall-layer-body">
+              <div>
+                <div class="wall-layer-number">Layer 01</div>
+                <div class="wall-layer-name">External Finish</div>
+                <div class="wall-layer-role">Weather barrier &amp; aesthetics</div>
+              </div>
+              <span class="wall-layer-arrow">→</span>
+            </div>
+          </div>
+
+          <div class="wall-layer" data-layer="2" role="listitem" tabindex="0"
+               aria-label="Layer 2: Cement Fibre Board">
+            <div class="wall-layer-swatch"></div>
+            <div class="wall-layer-body">
+              <div>
+                <div class="wall-layer-number">Layer 02</div>
+                <div class="wall-layer-name">Cement Fibre Board</div>
+                <div class="wall-layer-role">Structural sheathing &amp; finish substrate</div>
+              </div>
+              <span class="wall-layer-arrow">→</span>
+            </div>
+          </div>
+
+          <div class="wall-layer" data-layer="3" role="listitem" tabindex="0"
+               aria-label="Layer 3: Vapour Barrier">
+            <div class="wall-layer-swatch"></div>
+            <div class="wall-layer-body">
+              <div>
+                <div class="wall-layer-number">Layer 03</div>
+                <div class="wall-layer-name">Vapour Barrier</div>
+                <div class="wall-layer-role">Moisture management membrane</div>
+              </div>
+              <span class="wall-layer-arrow">→</span>
+            </div>
+          </div>
+
+          <div class="wall-layer" data-layer="4" role="listitem" tabindex="0"
+               aria-label="Layer 4: Rockwool Insulation">
+            <div class="wall-layer-swatch"></div>
+            <div class="wall-layer-body">
+              <div>
+                <div class="wall-layer-number">Layer 04</div>
+                <div class="wall-layer-name">Rockwool Insulation</div>
+                <div class="wall-layer-role">Thermal &amp; acoustic performance</div>
+              </div>
+              <span class="wall-layer-arrow">→</span>
+            </div>
+          </div>
+
+          <div class="wall-layer" data-layer="5" role="listitem" tabindex="0"
+               aria-label="Layer 5: MEP Services">
+            <div class="wall-layer-swatch"></div>
+            <div class="wall-layer-body">
+              <div>
+                <div class="wall-layer-number">Layer 05</div>
+                <div class="wall-layer-name">MEP Services</div>
+                <div class="wall-layer-role">Electrical conduits &amp; plumbing routes</div>
+              </div>
+              <span class="wall-layer-arrow">→</span>
+            </div>
+          </div>
+
+          <div class="wall-layer" data-layer="6" role="listitem" tabindex="0"
+               aria-label="Layer 6: GI Wall Framing">
+            <div class="wall-layer-swatch"></div>
+            <div class="wall-layer-body">
+              <div>
+                <div class="wall-layer-number">Layer 06</div>
+                <div class="wall-layer-name">GI Wall Framing</div>
+                <div class="wall-layer-role">Precision C-channel structural grid</div>
+              </div>
+              <span class="wall-layer-arrow">→</span>
+            </div>
+          </div>
+
+          <div class="wall-layer" data-layer="7" role="listitem" tabindex="0"
+               aria-label="Layer 7: MS Structural Frame">
+            <div class="wall-layer-swatch"></div>
+            <div class="wall-layer-body">
+              <div>
+                <div class="wall-layer-number">Layer 07</div>
+                <div class="wall-layer-name">MS Structural Frame</div>
+                <div class="wall-layer-role">Primary load-bearing steel skeleton</div>
+              </div>
+              <span class="wall-layer-arrow">→</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONSTRUCTION STAGES
+═══════════════════════════════════════════════════════════ -->
+<section id="stages" aria-labelledby="stages-title">
+  <div class="container">
+    <div class="stages-header reveal">
+      <div class="section-label">The Process</div>
+      <h2 class="section-title" id="stages-title">From <em>Idea to Reality</em></h2>
+      <p class="section-sub" style="margin: 16px auto 0; max-width: 500px;">
+        Every FUSIONest project follows a disciplined on-site construction process.
+        Click any stage to explore what happens.
+      </p>
+    </div>
+  </div>
+
+  <div class="stages-track-wrap" id="stages-wrap">
+    <div class="stages-track" id="stages-track" role="list">
+
+      <div class="stage-card" data-stage="1" role="listitem" tabindex="0" aria-label="Stage 1: Discover">
+        <div class="stage-node">
+          <span class="stage-icon" aria-hidden="true">💬</span>
+          <span class="stage-num">01</span>
+        </div>
+        <div class="stage-name">Discover</div>
+        <div class="stage-desc">Understanding your requirements, site and vision.</div>
+      </div>
+
+      <div class="stage-card" data-stage="2" role="listitem" tabindex="0" aria-label="Stage 2: Design">
+        <div class="stage-node">
+          <span class="stage-icon" aria-hidden="true">📐</span>
+          <span class="stage-num">02</span>
+        </div>
+        <div class="stage-name">Design</div>
+        <div class="stage-desc">Architectural planning, 3D modelling and material selection.</div>
+      </div>
+
+      <div class="stage-card" data-stage="3" role="listitem" tabindex="0" aria-label="Stage 3: Engineering">
+        <div class="stage-node">
+          <span class="stage-icon" aria-hidden="true">⚙️</span>
+          <span class="stage-num">03</span>
+        </div>
+        <div class="stage-name">Engineering</div>
+        <div class="stage-desc">Structural detailing, MEP coordination and specifications.</div>
+      </div>
+
+      <div class="stage-card" data-stage="4" role="listitem" tabindex="0" aria-label="Stage 4: Site Preparation">
+        <div class="stage-node">
+          <span class="stage-icon" aria-hidden="true">🏗️</span>
+          <span class="stage-num">04</span>
+        </div>
+        <div class="stage-name">Site Preparation</div>
+        <div class="stage-desc">Foundation, ground levelling and site readiness.</div>
+      </div>
+
+      <div class="stage-card" data-stage="5" role="listitem" tabindex="0" aria-label="Stage 5: Structural Frame">
+        <div class="stage-node">
+          <span class="stage-icon" aria-hidden="true">🔩</span>
+          <span class="stage-num">05</span>
+        </div>
+        <div class="stage-name">Structural Frame</div>
+        <div class="stage-desc">MS frame erected, columns, beams and joists installed.</div>
+      </div>
+
+      <div class="stage-card" data-stage="6" role="listitem" tabindex="0" aria-label="Stage 6: Wall System">
+        <div class="stage-node">
+          <span class="stage-icon" aria-hidden="true">🧱</span>
+          <span class="stage-num">06</span>
+        </div>
+        <div class="stage-name">Wall System</div>
+        <div class="stage-desc">GI framing, MEP, insulation, vapour barrier and board installation.</div>
+      </div>
+
+      <div class="stage-card" data-stage="7" role="listitem" tabindex="0" aria-label="Stage 7: Finishing">
+        <div class="stage-node">
+          <span class="stage-icon" aria-hidden="true">🎨</span>
+          <span class="stage-num">07</span>
+        </div>
+        <div class="stage-name">Finishing</div>
+        <div class="stage-desc">Interior and exterior finishes, flooring, fixtures and painting.</div>
+      </div>
+
+      <div class="stage-card" data-stage="8" role="listitem" tabindex="0" aria-label="Stage 8: Handover">
+        <div class="stage-node">
+          <span class="stage-icon" aria-hidden="true">🏡</span>
+          <span class="stage-num">08</span>
+        </div>
+        <div class="stage-name">Handover</div>
+        <div class="stage-desc">Final inspection, quality check and project delivery.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Stage detail panel (dynamic) -->
+  <div class="container">
+    <div class="stage-detail" id="stage-detail">
+      <div class="stage-detail-info">
+        <div class="stage-detail-label" id="sd-label">STAGE 01 · DISCOVER</div>
+        <div class="stage-detail-title" id="sd-title">Discovery &amp; Consultation</div>
+        <div class="stage-detail-desc" id="sd-desc">Loading...</div>
+        <div class="stage-detail-points" id="sd-points"></div>
+      </div>
+      <div class="stage-detail-visual" id="sd-visual" aria-hidden="true">
+        <span id="sd-icon">💬</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROJECTS GALLERY
+═══════════════════════════════════════════════════════════ -->
+<section id="projects" aria-labelledby="projects-title">
+  <div class="container">
+    <div class="projects-header reveal">
+      <div>
+        <div class="section-label">Our Work</div>
+        <h2 class="section-title" id="projects-title"><em>Project</em> Portfolio</h2>
+      </div>
+      <a href="admin.html" class="btn-secondary" style="font-size:0.72rem;padding:12px 24px;" aria-label="Admin dashboard to add projects">
+        + Add Project (Admin)
+      </a>
+    </div>
+
+    <div class="projects-filters stagger" id="filters" role="group" aria-label="Project category filters">
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="Residential" aria-pressed="false">Residential</button>
+      <button class="filter-btn" data-filter="Farmhouse" aria-pressed="false">Farmhouse</button>
+      <button class="filter-btn" data-filter="Resort" aria-pressed="false">Resort</button>
+      <button class="filter-btn" data-filter="Commercial" aria-pressed="false">Commercial</button>
+      <button class="filter-btn" data-filter="Office" aria-pressed="false">Office</button>
+      <button class="filter-btn" data-filter="Site Office" aria-pressed="false">Site Office</button>
+    </div>
+
+    <div class="projects-grid" id="projects-grid" role="list" aria-label="Project cards">
+      <!-- Populated by JS from localStorage -->
+      <div class="projects-empty" id="projects-empty" style="display:none;">
+        <div style="font-size:2.5rem;margin-bottom:16px;">🏗️</div>
+        <p>No projects in this category yet.</p>
+        <p style="color:var(--text-muted);margin-top:8px;font-size:0.78rem;">Use the Admin dashboard to add your first project.</p>
+        <a href="admin.html" class="btn-primary" style="margin-top:24px;display:inline-flex;">+ Add Project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Project Detail Modal -->
+<div class="project-modal-overlay" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <button class="project-modal-close" id="modal-close" aria-label="Close project detail">✕</button>
+  <div class="project-modal">
+    <div class="project-modal-hero">
+      <img src="" alt="" id="modal-hero-img" />
+      <div class="project-modal-hero-overlay"></div>
+      <div class="project-modal-hero-content">
+        <div class="section-label" id="modal-category"></div>
+        <h2 style="font-size:2rem;font-weight:800;" id="modal-title"></h2>
+        <p style="color:var(--text-secondary);margin-top:8px;" id="modal-location"></p>
+      </div>
+    </div>
+    <div class="project-modal-body">
+      <div class="project-modal-meta-grid" id="modal-meta"></div>
+      <div class="section-label" style="margin-bottom:12px;">Project Story</div>
+      <p id="modal-desc" style="font-size:0.9rem;color:var(--text-secondary);line-height:1.8;"></p>
+      <div class="project-modal-gallery" id="modal-gallery" style="margin-top:32px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     WHY PREFAB
+═══════════════════════════════════════════════════════════ -->
+<section id="why-prefab" aria-labelledby="why-title">
+  <div class="container">
+    <div class="why-prefab-header reveal">
+      <div class="section-label">The Difference</div>
+      <h2 class="section-title" id="why-title">Why Choose <em>Prefab?</em></h2>
+      <p class="section-sub" style="margin: 16px auto 0;">
+        See how the FUSIONest approach compares to traditional construction methods.
+      </p>
+    </div>
+
+    <div class="comparison-grid">
+      <!-- FUSIONest -->
+      <div class="reveal-left">
+        <div class="comparison-col-title fusionest">⚡ FUSIONest Prefab Approach</div>
+        <div class="comparison-rows">
+          <div class="comparison-row positive">Controlled, precision-engineered construction process</div>
+          <div class="comparison-row positive">Significantly faster installation timeline</div>
+          <div class="comparison-row positive">Higher material quality control and consistency</div>
+          <div class="comparison-row positive">Reduced on-site waste and site disruption</div>
+          <div class="comparison-row positive">Predictable timelines and cost management</div>
+          <div class="comparison-row positive">Engineering-driven design with structural accuracy</div>
+          <div class="comparison-row positive">Integrated MEP coordination within the wall system</div>
+          <div class="comparison-row positive">Modern aesthetic, customizable to any style</div>
+        </div>
+      </div>
+
+      <div class="comparison-vs"><div class="vs-badge">VS</div></div>
+
+      <!-- Traditional -->
+      <div class="reveal-right">
+        <div class="comparison-col-title traditional">Traditional Site-Heavy Construction</div>
+        <div class="comparison-rows">
+          <div class="comparison-row negative">Highly variable quality dependent on labour and conditions</div>
+          <div class="comparison-row negative">Longer construction timelines with weather dependencies</div>
+          <div class="comparison-row negative">Less consistent material usage and handling</div>
+          <div class="comparison-row negative">Higher site waste and disruption to surroundings</div>
+          <div class="comparison-row negative">Delays common due to coordination issues</div>
+          <div class="comparison-row negative">Structural performance harder to verify</div>
+          <div class="comparison-row negative">MEP coordination often resolved on-site</div>
+          <div class="comparison-row negative">Finish quality can vary significantly</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SOLUTIONS
+═══════════════════════════════════════════════════════════ -->
+<section id="solutions" aria-labelledby="solutions-title">
+  <div class="container">
+    <div class="solutions-header reveal">
+      <div class="section-label">What We Build</div>
+      <h2 class="section-title" id="solutions-title">Choose Your <em>Space</em></h2>
+      <p class="section-sub" style="margin: 16px auto 0;">
+        From intimate farmhouses to large commercial complexes — FUSIONest builds them all.
+      </p>
+    </div>
+    <div class="solutions-grid stagger" id="solutions-grid">
+      <div class="solution-card" tabindex="0" aria-label="Residential solutions">
+        <span class="solution-icon" aria-hidden="true">🏠</span>
+        <div class="solution-name">Residential</div>
+        <div class="solution-items">Modular Homes<br/>Villas<br/>Weekend Homes<br/>Holiday Homes</div>
+      </div>
+      <div class="solution-card" tabindex="0" aria-label="Farmhouse solutions">
+        <span class="solution-icon" aria-hidden="true">🌾</span>
+        <div class="solution-name">Farmhouses</div>
+        <div class="solution-items">Luxury Farmhouses<br/>Weekend Retreats<br/>Agricultural Stays<br/>Estate Homes</div>
+      </div>
+      <div class="solution-card" tabindex="0" aria-label="Hospitality solutions">
+        <span class="solution-icon" aria-hidden="true">🏨</span>
+        <div class="solution-name">Hospitality</div>
+        <div class="solution-items">Resorts<br/>Retreats<br/>Pod Stays<br/>Guest Accommodation</div>
+      </div>
+      <div class="solution-card" tabindex="0" aria-label="Commercial solutions">
+        <span class="solution-icon" aria-hidden="true">🏢</span>
+        <div class="solution-name">Commercial</div>
+        <div class="solution-items">Offices<br/>Showrooms<br/>Experience Centres<br/>Cafés &amp; Retail</div>
+      </div>
+      <div class="solution-card" tabindex="0" aria-label="Industrial and site solutions">
+        <span class="solution-icon" aria-hidden="true">🏭</span>
+        <div class="solution-name">Industrial</div>
+        <div class="solution-items">Site Offices<br/>Staff Accommodation<br/>Utility Structures<br/>Relocatable Units</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MODELS
+═══════════════════════════════════════════════════════════ -->
+<section id="models" aria-labelledby="models-title">
+  <div class="container">
+    <div class="models-header reveal">
+      <div class="section-label">Our Series</div>
+      <h2 class="section-title" id="models-title"><em>FUSIONest</em> Models</h2>
+      <p class="section-sub">Four distinct product families to suit every requirement and aspiration.</p>
+    </div>
+  </div>
+  <div class="container-wide">
+    <div class="models-track-wrap">
+      <div class="models-track" id="models-track">
+
+        <div class="model-card" tabindex="0" aria-label="Nesthira model">
+          <div class="model-card-header">
+            <span class="model-num">01</span>
+            <span class="model-icon" aria-hidden="true">🏡</span>
+            <div class="model-name">Nesthira</div>
+            <div class="model-tagline">Home. Reimagined.</div>
+          </div>
+          <div class="model-card-body">
+            <div class="model-desc">
+              Nesthira is FUSIONest's flagship residential series. Designed for modern living,
+              combining comfort, customization and architectural elegance in every prefab home.
+            </div>
+            <div class="model-features">
+              <div class="model-feature">Residential &amp; lifestyle focused</div>
+              <div class="model-feature">Fully customizable layouts</div>
+              <div class="model-feature">Premium interior options</div>
+              <div class="model-feature">Designed for permanent living</div>
+            </div>
+          </div>
+          <div class="model-card-footer">
+            <a href="#contact" class="model-cta" aria-label="Enquire about Nesthira">Enquire Now →</a>
+            <span style="font-size:0.7rem;color:var(--text-muted);">Residential Series</span>
+          </div>
+        </div>
+
+        <div class="model-card" tabindex="0" aria-label="Modunite model">
+          <div class="model-card-header">
+            <span class="model-num">02</span>
+            <span class="model-icon" aria-hidden="true">🏗️</span>
+            <div class="model-name">Modunite</div>
+            <div class="model-tagline">Modular. Scalable. Smart.</div>
+          </div>
+          <div class="model-card-body">
+            <div class="model-desc">
+              Modunite is the versatile workhorse of the FUSIONest range. Built for
+              workspaces, commercial applications and scalable modular configurations.
+            </div>
+            <div class="model-features">
+              <div class="model-feature">Commercial &amp; workspace oriented</div>
+              <div class="model-feature">Scalable modular configuration</div>
+              <div class="model-feature">Fast installation timeline</div>
+              <div class="model-feature">Relocatable &amp; expandable</div>
+            </div>
+          </div>
+          <div class="model-card-footer">
+            <a href="#contact" class="model-cta" aria-label="Enquire about Modunite">Enquire Now →</a>
+            <span style="font-size:0.7rem;color:var(--text-muted);">Commercial Series</span>
+          </div>
+        </div>
+
+        <div class="model-card" tabindex="0" aria-label="Havasa model">
+          <div class="model-card-header">
+            <span class="model-num">03</span>
+            <span class="model-icon" aria-hidden="true">✨</span>
+            <div class="model-name">Havasa</div>
+            <div class="model-tagline">Heaven. Safe.</div>
+          </div>
+          <div class="model-card-body">
+            <div class="model-desc">
+              Havasa is FUSIONest's compact premium pod concept. Designed for intimate
+              retreats, hospitality pods and unique compact living experiences.
+            </div>
+            <div class="model-features">
+              <div class="model-feature">Compact pod design</div>
+              <div class="model-feature">Hospitality &amp; retreat focused</div>
+              <div class="model-feature">Premium finish within small footprint</div>
+              <div class="model-feature">Ideal for resort &amp; eco-stay</div>
+            </div>
+          </div>
+          <div class="model-card-footer">
+            <a href="#contact" class="model-cta" aria-label="Enquire about Havasa">Enquire Now →</a>
+            <span style="font-size:0.7rem;color:var(--text-muted);">Pod Series</span>
+          </div>
+        </div>
+
+        <div class="model-card" tabindex="0" aria-label="Fumora model">
+          <div class="model-card-header">
+            <span class="model-num">04</span>
+            <span class="model-icon" aria-hidden="true">🌟</span>
+            <div class="model-name">Fumora</div>
+            <div class="model-tagline">Fusion. Form. Future.</div>
+          </div>
+          <div class="model-card-body">
+            <div class="model-desc">
+              Fumora represents the premium architectural apex of the FUSIONest range.
+              Where modular construction meets luxury design, for discerning clients.
+            </div>
+            <div class="model-features">
+              <div class="model-feature">Luxury &amp; premium positioning</div>
+              <div class="model-feature">High-end architectural detailing</div>
+              <div class="model-feature">Premium interior specification</div>
+              <div class="model-feature">Smart-home ready infrastructure</div>
+            </div>
+          </div>
+          <div class="model-card-footer">
+            <a href="#contact" class="model-cta" aria-label="Enquire about Fumora">Enquire Now →</a>
+            <span style="font-size:0.7rem;color:var(--text-muted);">Premium Series</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ABOUT FUSIONEST
+═══════════════════════════════════════════════════════════ -->
+<section id="about" aria-labelledby="about-title">
+  <div class="about-bg" role="img" aria-label="FUSIONest team at work"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="about-grid">
+      <div class="reveal-left">
+        <div class="section-label">Our Philosophy</div>
+        <h2 class="section-title" id="about-title"><em>FUSIONest</em><br/>Built Different.</h2>
+        <div class="divider"></div>
+        <div class="about-statements">
+          <div class="about-statement"><em>01</em> We build responsibly. Reducing site waste and environmental impact in every project.</div>
+          <div class="about-statement"><em>02</em> We engineer with precision. Every structural element is designed before it is installed.</div>
+          <div class="about-statement"><em>03</em> We design for real life. Spaces that work as beautifully as they look.</div>
+          <div class="about-statement"><em>04</em> We manufacture with control. Quality-managed processes from frame to finish.</div>
+          <div class="about-statement"><em>05</em> We install with purpose. Coordinated, efficient and disruption-minimised delivery.</div>
+        </div>
+      </div>
+      <div class="about-visual reveal-right">
+        <div class="about-img-container">
+          <img src="assets/images/about_bg.jpg"
+               alt="FUSIONest engineering team and construction site"
+               loading="lazy" />
+        </div>
+        <div class="about-mission-card">
+          <div class="about-mission-title">Our Mission</div>
+          <div class="about-mission-text">
+            To reimagine how spaces are built — faster, smarter, and more responsibly —
+            combining thoughtful design with precision engineering.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════════════════════ -->
+<section id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact-header reveal">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title" id="contact-title">Let's Build Your<br/><em>Next Space.</em></h2>
+      <p class="section-sub" style="margin: 16px auto 0;">
+        Tell us about your project. Our team will respond within 24 hours.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Info -->
+      <div class="contact-info reveal-left">
+        <div class="contact-info-item">
+          <div class="contact-info-icon" aria-hidden="true">📍</div>
+          <div>
+            <div class="contact-info-label">Visit Us</div>
+            <div class="contact-info-value">
+              3rd Floor, 301 Flat, 100 Feet Rd,<br/>
+              above Varun Bajaj, VIP Hills,<br/>
+              Madhapur, Hyderabad, Telangana 500081
+            </div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon" aria-hidden="true">📞</div>
+          <div>
+            <div class="contact-info-label">Call Us</div>
+            <div class="contact-info-value">
+              <a href="tel:+919513258776">+91 9513258776</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon" aria-hidden="true">✉️</div>
+          <div>
+            <div class="contact-info-label">Email Us</div>
+            <div class="contact-info-value">
+              <a href="mailto:hello@fusionest.com">hello@fusionest.com</a>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/919513258776?text=Hi%20FUSIONest%2C%20I%20am%20interested%20in%20a%20project."
+           class="contact-whatsapp" target="_blank" rel="noopener noreferrer"
+           aria-label="Chat with FUSIONest on WhatsApp">
+          <span style="font-size:1.2rem;" aria-hidden="true">💬</span>
+          Chat on WhatsApp
+        </a>
+        <div class="contact-socials">
+          <a href="https://fusionest.com" class="social-btn" target="_blank" aria-label="FUSIONest Website">🌐</a>
+          <a href="mailto:hello@fusionest.com" class="social-btn" aria-label="Email FUSIONest">✉️</a>
+          <a href="tel:+919513258776" class="social-btn" aria-label="Call FUSIONest">📞</a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="reveal-right">
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="cf-name">Your Name *</label>
+              <input class="form-input" id="cf-name" name="name" type="text" placeholder="Your full name" required aria-required="true" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-phone">Phone *</label>
+              <input class="form-input" id="cf-phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required aria-required="true" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-email">Email Address</label>
+            <input class="form-input" id="cf-email" name="email" type="email" placeholder="hello@yourcompany.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-type">Project Type *</label>
+            <select class="form-select" id="cf-type" name="type" required aria-required="true">
+              <option value="" disabled selected>Select your project type</option>
+              <option>Home / Residence</option>
+              <option>Farmhouse</option>
+              <option>Resort / Hospitality</option>
+              <option>Office</option>
+              <option>Commercial Space</option>
+              <option>Site Office</option>
+              <option>Pod / Compact Unit</option>
+              <option>Custom Project</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="cf-area">Approximate Area</label>
+              <input class="form-input" id="cf-area" name="area" type="text" placeholder="e.g. 1200 sq ft" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-location">Location</label>
+              <input class="form-input" id="cf-location" name="location" type="text" placeholder="City / State" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-message">Tell Us About Your Project</label>
+            <textarea class="form-textarea" id="cf-message" name="message" placeholder="Describe your requirements, timeline, budget or any specific needs..."></textarea>
+          </div>
+          <div class="form-success" id="form-success" role="alert">
+            ✓ Thank you! Your inquiry has been received. We'll be in touch within 24 hours.
+          </div>
+          <button type="submit" class="form-submit" id="form-submit" aria-label="Submit project inquiry">
+            Start a Conversation
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">FUSIONEST</div>
+        <p class="footer-tagline">
+          FUSIONest specializes in crafting state-of-the-art prefab and modular structures —
+          from intimate homes to large commercial spaces. Engineered. Installed. Delivered.
+        </p>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <div class="footer-links">
+          <a href="#about-intro">About</a>
+          <a href="#wall-system">Wall System</a>
+          <a href="#stages">How We Build</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <a href="admin.html">Admin</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Our Models</div>
+        <div class="footer-links">
+          <a href="#models">Nesthira</a>
+          <a href="#models">Modunite</a>
+          <a href="#models">Havasa</a>
+          <a href="#models">Fumora</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="tel:+919513258776">+91 9513258776</a>
+          <a href="mailto:hello@fusionest.com">hello@fusionest.com</a>
+          <a href="https://fusionest.com" target="_blank">fusionest.com</a>
+          <a href="https://wa.me/919513258776" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 FUSIONest Pvt. Ltd. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CLIENT PRESENTATION MODE
+═══════════════════════════════════════════════════════════ -->
+<div id="presentation-mode" role="dialog" aria-modal="true" aria-label="Client presentation mode">
+
+  <!-- Slide 01 -->
+  <div class="pres-slide active" data-slide="1">
+    <div class="pres-grid-bg"></div>
+    <div class="pres-slide-label">Welcome</div>
+    <div class="pres-slide-title">FUSION<em>est</em></div>
+    <div class="pres-slide-content">Premium Prefab &amp; Modular Construction<br/>
+      <span style="font-size:0.9rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);">Engineered · Installed · Delivered</span>
+    </div>
+  </div>
+
+  <!-- Slide 02 -->
+  <div class="pres-slide" data-slide="2">
+    <div class="pres-grid-bg"></div>
+    <div class="pres-slide-label">What We Build</div>
+    <div class="pres-slide-title">Spaces Built<br/><em>Differently.</em></div>
+    <div class="pres-slide-content">Homes. Farmhouses. Resorts. Offices. Commercial Spaces.<br/>From concept to handover — FUSIONest engineers it all.</div>
+  </div>
+
+  <!-- Slide 03 -->
+  <div class="pres-slide" data-slide="3">
+    <div class="pres-grid-bg"></div>
+    <div class="pres-slide-label">Why Prefab</div>
+    <div class="pres-slide-title">Built <em>Smarter.</em></div>
+    <div class="pres-slide-grid">
+      <div class="pres-slide-card"><h3>⚡ Faster</h3><p>Significantly reduced construction timelines versus conventional builds.</p></div>
+      <div class="pres-slide-card"><h3>🎯 Precise</h3><p>Engineering-driven process ensures structural accuracy and quality.</p></div>
+      <div class="pres-slide-card"><h3>🌿 Responsible</h3><p>Reduced site waste, lower disruption, sustainable construction practices.</p></div>
+    </div>
+  </div>
+
+  <!-- Slide 04 -->
+  <div class="pres-slide" data-slide="4">
+    <div class="pres-grid-bg"></div>
+    <div class="pres-slide-label">How We Build</div>
+    <div class="pres-slide-title">The <em>Process</em></div>
+    <div class="pres-slide-content">
+      Discover → Design → Engineering → Site Preparation → Structural Frame → Wall System → Finishing → Handover<br/>
+      <span style="font-size:0.85rem;color:var(--text-muted);">Every stage engineered and coordinated for your project.</span>
+    </div>
+  </div>
+
+  <!-- Slide 05 -->
+  <div class="pres-slide" data-slide="5">
+    <div class="pres-grid-bg"></div>
+    <div class="pres-slide-label">The Structure</div>
+    <div class="pres-slide-title"><em>MS</em> Structural Frame</div>
+    <div class="pres-slide-content">
+      The primary load-bearing steel skeleton of every FUSIONest structure.<br/>
+      Columns. Beams. Joists. Connections. All engineered before installation.
+    </div>
+  </div>
+
+  <!-- Slide 06 -->
+  <div class="pres-slide" data-slide="6">
+    <div class="pres-grid-bg"></div>
+    <div class="pres-slide-label">Wall Engineering</div>
+    <div class="pres-slide-title">The <em>Wall System</em></div>
+    <div class="pres-slide-grid">
+      <div class="pres-slide-card"><h3>🏗️ GI Framing</h3><p>Precision C-channel system supporting all wall panels and services.</p></div>
+      <div class="pres-slide-card"><h3>🔥 Insulation</h3><p>Rockwool thermal and acoustic insulation for true indoor comfort.</p></div>
+      <div class="pres-slide-card"><h3>🪵 Cement Fibre Board</h3><p>Durable, stable panel system for high-quality finished surfaces.</p></div>
+    </div>
+  </div>
+
+  <!-- Slide 07 -->
+  <div class="pres-slide" data-slide="7">
+    <div class="pres-grid-bg"></div>
+    <div class="pres-slide-label">Our Work</div>
+    <div class="pres-slide-title">560+ <em>Projects</em></div>
+    <div class="pres-slide-content">
+      Completed across Hyderabad and beyond.<br/>
+      Homes, Farmhouses, Resorts, Offices &amp; Commercial Spaces.
+    </div>
+  </div>
+
+  <!-- Slide 08 -->
+  <div class="pres-slide" data-slide="8">
+    <div class="pres-grid-bg"></div>
+    <div class="pres-slide-label">Quality</div>
+    <div class="pres-slide-title">Quality at Every <em>Stage</em></div>
+    <div class="pres-slide-content">
+      98% client satisfaction rate. Every project, every time.<br/>
+      Engineering checks at structure, frame, MEP, insulation, board and finish stages.
+    </div>
+  </div>
+
+  <!-- Slide 09 -->
+  <div class="pres-slide" data-slide="9">
+    <div class="pres-grid-bg"></div>
+    <div class="pres-slide-label">About</div>
+    <div class="pres-slide-title">23+ Years of<br/><em>Expertise</em></div>
+    <div class="pres-slide-content">
+      FUSIONest has been reimagining how spaces are built — faster, smarter, and more responsibly.<br/>
+      Design. Engineering. Installation. Finishing. Handover.
+    </div>
+  </div>
+
+  <!-- Slide 10 -->
+  <div class="pres-slide" data-slide="10">
+    <div class="pres-grid-bg"></div>
+    <div class="pres-slide-label">Your Project</div>
+    <div class="pres-slide-title">Let's Build <em>Yours.</em></div>
+    <div class="pres-slide-content">
+      📞 +91 9513258776 &nbsp;|&nbsp; ✉️ hello@fusionest.com<br/>
+      Madhapur, Hyderabad, Telangana<br/>
+      <span style="font-size:0.85rem;color:var(--text-muted);">fusionest.com</span>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="pres-controls">
+    <div class="pres-nav-btns">
+      <button class="pres-btn" id="pres-back" aria-label="Previous slide">← Back</button>
+      <button class="pres-btn primary" id="pres-next" aria-label="Next slide">Next →</button>
+    </div>
+    <div class="pres-progress" id="pres-dots" role="tablist" aria-label="Slide progress"></div>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div class="pres-counter" id="pres-counter">1 / 10</div>
+      <button class="pres-close" id="pres-close" aria-label="Exit presentation mode">✕ Exit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/main.js" defer></script>
+<script src="js/wall.js" defer></script>
+</body>
+</html>
