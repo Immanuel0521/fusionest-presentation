@@ -168,157 +168,102 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     WALL SYSTEM — INTERACTIVE CUTAWAY
+     WALL SYSTEM — ILLUSTRATED CROSS-SECTION
 ═══════════════════════════════════════════════════════════ -->
 <section id="wall-system" aria-labelledby="wall-title">
   <div class="container">
-    <div class="text-center reveal" style="margin-bottom:60px;">
+    <div class="text-center reveal" style="margin-bottom:48px;">
       <div class="section-label">Engineering Detail</div>
       <h2 class="section-title" id="wall-title">The <em>Wall System</em></h2>
-      <p class="section-sub" style="margin: 16px auto 0;">
-        Click each layer to explore the engineered wall assembly used in FUSIONest structures.
+      <p class="section-sub" style="margin:16px auto 0;max-width:560px;">
+        Every FUSIONest wall is a precision-engineered assembly of 7 distinct layers —
+        from a robust MS structural frame to a smooth interior finish.
       </p>
     </div>
 
-    <div class="wall-system-grid">
-      <!-- Info panel (sticky) -->
-      <div class="wall-section-info reveal-left">
-        <div class="wall-info-panel" id="wall-info-panel">
-          <div class="wall-info-layer-num" id="wip-num">LAYER 01 · EXTERNAL FINISH</div>
-          <div class="wall-info-name" id="wip-name">External Finish</div>
-          <div class="wall-info-desc" id="wip-desc">
-            The outermost face of the FUSIONest wall system. Weather-resistant exterior finish provides
-            durability, aesthetic quality, and protection against the elements.
-          </div>
-          <div class="wall-info-specs" id="wip-specs">
-            <div class="wall-spec-row">
-              <span class="wall-spec-label">Function</span>
-              <span class="wall-spec-value">Weather Protection</span>
-            </div>
-            <div class="wall-spec-row">
-              <span class="wall-spec-label">Location</span>
-              <span class="wall-spec-value">Outermost Layer</span>
-            </div>
-            <div class="wall-spec-row">
-              <span class="wall-spec-label">Materials</span>
-              <span class="wall-spec-value">Exterior Grade Paint / Texture</span>
-            </div>
-          </div>
-        </div>
+    <!-- Full-width illustration -->
+    <div class="reveal" style="margin-bottom:56px;border-radius:var(--r-xl);overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.5);">
+      <img src="assets/images/wall_illustration.jpg"
+           alt="FUSIONest wall cross-section: 7 engineered layers from interior finish to external finish"
+           style="width:100%;display:block;border-radius:var(--r-xl);" loading="lazy" />
+    </div>
 
-        <!-- Visual bar representation -->
-        <div class="wall-visual-bar" id="wall-visual-bar" style="margin-top:24px;" aria-hidden="true">
-          <div class="wall-visual-segment active" data-seg="1" style="background:#8B9DC3;" title="External Finish"></div>
-          <div class="wall-visual-segment" data-seg="2" style="background:#E8C99A;" title="Cement Fibre Board"></div>
-          <div class="wall-visual-segment" data-seg="3" style="background:rgba(150,200,255,0.5);" title="Vapour Barrier"></div>
-          <div class="wall-visual-segment" data-seg="4" style="background:#F5A623;" title="Rockwool Insulation"></div>
-          <div class="wall-visual-segment" data-seg="5" style="background:#9B6B9B;" title="MEP Services"></div>
-          <div class="wall-visual-segment" data-seg="6" style="background:#7EB8D4;" title="GI Wall Framing"></div>
-          <div class="wall-visual-segment" data-seg="7" style="background:#C8D8A0;" title="MS Structural Frame"></div>
-        </div>
-        <p style="font-size:0.65rem;color:var(--text-muted);margin-top:10px;text-align:center;letter-spacing:0.1em;">← EXTERIOR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INTERIOR →</p>
+    <!-- Layer cards: correct order interior → exterior -->
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+
+      <div class="wall-layer-card" style="--card-color:#F0EDE8;">
+        <div class="wlc-num">01</div>
+        <div class="wlc-icon">🎨</div>
+        <div class="wlc-name">Interior Finishing</div>
+        <div class="wlc-desc">Smooth, painted interior wall surface — ready for your design vision.</div>
+        <div class="wlc-tag">Innermost Layer</div>
       </div>
 
-      <!-- Layers list -->
-      <div class="reveal-right">
-        <div class="wall-layers-wrapper" id="wall-layers" role="list" aria-label="Wall system layers">
+      <div class="wall-layer-card" style="--card-color:#E8C99A;">
+        <div class="wlc-num">02</div>
+        <div class="wlc-icon">🪵</div>
+        <div class="wlc-name">Internal Cement Fibre Board</div>
+        <div class="wlc-desc">Rigid, durable 12mm board — structural substrate for internal finish.</div>
+        <div class="wlc-tag">Cement Fibre Board</div>
+      </div>
 
-          <div class="wall-layer active" data-layer="1" role="listitem" tabindex="0"
-               aria-label="Layer 1: External Finish - click for details">
-            <div class="wall-layer-swatch"></div>
-            <div class="wall-layer-body">
-              <div>
-                <div class="wall-layer-number">Layer 01</div>
-                <div class="wall-layer-name">External Finish</div>
-                <div class="wall-layer-role">Weather barrier &amp; aesthetics</div>
-              </div>
-              <span class="wall-layer-arrow">→</span>
-            </div>
-          </div>
+      <div class="wall-layer-card" style="--card-color:#FFE566;">
+        <div class="wlc-num">03</div>
+        <div class="wlc-icon">🟡</div>
+        <div class="wlc-name">Vapour Barrier Membrane</div>
+        <div class="wlc-desc">Yellow moisture-control membrane — blocks condensation from inside.</div>
+        <div class="wlc-tag">Moisture Protection</div>
+      </div>
 
-          <div class="wall-layer" data-layer="2" role="listitem" tabindex="0"
-               aria-label="Layer 2: Cement Fibre Board">
-            <div class="wall-layer-swatch"></div>
-            <div class="wall-layer-body">
-              <div>
-                <div class="wall-layer-number">Layer 02</div>
-                <div class="wall-layer-name">Cement Fibre Board</div>
-                <div class="wall-layer-role">Structural sheathing &amp; finish substrate</div>
-              </div>
-              <span class="wall-layer-arrow">→</span>
-            </div>
-          </div>
+      <div class="wall-layer-card" style="--card-color:#F5A623;">
+        <div class="wlc-num">04</div>
+        <div class="wlc-icon">🔥</div>
+        <div class="wlc-name">GI Studs + Rockwool Insulation</div>
+        <div class="wlc-desc">C-channel GI stud frame with Rockwool packed in every cavity — thermal &amp; acoustic core.</div>
+        <div class="wlc-tag">Core Insulated Frame</div>
+      </div>
 
-          <div class="wall-layer" data-layer="3" role="listitem" tabindex="0"
-               aria-label="Layer 3: Vapour Barrier">
-            <div class="wall-layer-swatch"></div>
-            <div class="wall-layer-body">
-              <div>
-                <div class="wall-layer-number">Layer 03</div>
-                <div class="wall-layer-name">Vapour Barrier</div>
-                <div class="wall-layer-role">Moisture management membrane</div>
-              </div>
-              <span class="wall-layer-arrow">→</span>
-            </div>
-          </div>
+      <div class="wall-layer-card" style="--card-color:#FFE566;">
+        <div class="wlc-num">05</div>
+        <div class="wlc-icon">🟡</div>
+        <div class="wlc-name">Vapour Barrier Membrane</div>
+        <div class="wlc-desc">Exterior-side moisture membrane — prevents rain-driven damp ingress.</div>
+        <div class="wlc-tag">Weather Barrier</div>
+      </div>
 
-          <div class="wall-layer" data-layer="4" role="listitem" tabindex="0"
-               aria-label="Layer 4: Rockwool Insulation">
-            <div class="wall-layer-swatch"></div>
-            <div class="wall-layer-body">
-              <div>
-                <div class="wall-layer-number">Layer 04</div>
-                <div class="wall-layer-name">Rockwool Insulation</div>
-                <div class="wall-layer-role">Thermal &amp; acoustic performance</div>
-              </div>
-              <span class="wall-layer-arrow">→</span>
-            </div>
-          </div>
+      <div class="wall-layer-card" style="--card-color:#E8C99A;">
+        <div class="wlc-num">06</div>
+        <div class="wlc-icon">🪵</div>
+        <div class="wlc-name">External Cement Fibre Board</div>
+        <div class="wlc-desc">Rigid external-face board — base for all exterior cladding and finishing.</div>
+        <div class="wlc-tag">Cement Fibre Board</div>
+      </div>
 
-          <div class="wall-layer" data-layer="5" role="listitem" tabindex="0"
-               aria-label="Layer 5: MEP Services">
-            <div class="wall-layer-swatch"></div>
-            <div class="wall-layer-body">
-              <div>
-                <div class="wall-layer-number">Layer 05</div>
-                <div class="wall-layer-name">MEP Services</div>
-                <div class="wall-layer-role">Electrical conduits &amp; plumbing routes</div>
-              </div>
-              <span class="wall-layer-arrow">→</span>
-            </div>
-          </div>
+      <div class="wall-layer-card" style="--card-color:#8B9DC3;">
+        <div class="wlc-num">07</div>
+        <div class="wlc-icon">🏠</div>
+        <div class="wlc-name">External Finishing</div>
+        <div class="wlc-desc">Weather-resistant exterior texture coat — protects and beautifies.</div>
+        <div class="wlc-tag">Outermost Layer</div>
+      </div>
 
-          <div class="wall-layer" data-layer="6" role="listitem" tabindex="0"
-               aria-label="Layer 6: GI Wall Framing">
-            <div class="wall-layer-swatch"></div>
-            <div class="wall-layer-body">
-              <div>
-                <div class="wall-layer-number">Layer 06</div>
-                <div class="wall-layer-name">GI Wall Framing</div>
-                <div class="wall-layer-role">Precision C-channel structural grid</div>
-              </div>
-              <span class="wall-layer-arrow">→</span>
-            </div>
-          </div>
+    </div>
 
-          <div class="wall-layer" data-layer="7" role="listitem" tabindex="0"
-               aria-label="Layer 7: MS Structural Frame">
-            <div class="wall-layer-swatch"></div>
-            <div class="wall-layer-body">
-              <div>
-                <div class="wall-layer-number">Layer 07</div>
-                <div class="wall-layer-name">MS Structural Frame</div>
-                <div class="wall-layer-role">Primary load-bearing steel skeleton</div>
-              </div>
-              <span class="wall-layer-arrow">→</span>
-            </div>
-          </div>
-
-        </div>
+    <!-- MS Frame note -->
+    <div class="reveal" style="margin-top:32px;padding:24px 32px;background:rgba(196,82,42,0.08);border:1px solid rgba(196,82,42,0.25);border-radius:var(--r-lg);display:flex;align-items:center;gap:20px;">
+      <span style="font-size:2rem;">🏗️</span>
+      <div>
+        <strong style="color:var(--terracotta);font-size:1rem;display:block;margin-bottom:4px;">MS Structural Frame — The Backbone</strong>
+        <span style="color:var(--text-secondary);font-size:0.88rem;">
+          Behind the entire wall assembly sits the primary MS (Mild Steel) structural frame — columns, beams and joists
+          engineered to carry all loads. Every wall panel, every layer is built upon this precision steel skeleton.
+        </span>
       </div>
     </div>
+
   </div>
 </section>
+
 
 <!-- ═══════════════════════════════════════════════════════════
      CONSTRUCTION STAGES
@@ -720,9 +665,9 @@
       </div>
       <div class="about-visual reveal-right">
         <div class="about-img-container">
-          <img src="assets/images/wall_illustration.jpg"
-           alt="FUSIONest wall system cross-section — all 7 layers from interior to exterior"
-           style="width:100%;border-radius:var(--r-xl);display:block;" />
+          <img src="assets/images/philosophy.jpg"
+               alt="FUSIONest — purposeful, premium prefab construction"
+               style="width:100%;border-radius:var(--r-xl);display:block;object-fit:cover;" loading="lazy" />
         </div>
         <div class="about-mission-card">
           <div class="about-mission-title">Our Mission</div>

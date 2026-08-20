@@ -776,7 +776,7 @@ function initModelScroll() {
   initDragScroll('models-track-wrap');
 }
 
-// ── PROJECT DATA (Netlify = fetch JSON; local = IndexedDB) ────
+// ── PROJECT DATA ──────────────────────────────────
 var _mainDB = null;
 function openMainDB(cb) {
   if (_mainDB) { cb(_mainDB); return; }
@@ -791,22 +791,35 @@ function openMainDB(cb) {
   req.onerror   = function()  { cb(null); };
 }
 
-function getProjectsFromDB(callback) {
-  if (location.protocol !== 'file:') {
-    // Hosted on Netlify — fetch static JSON, visible to all visitors
-    fetch('data/projects.json?t=' + Date.now())
-      .then(function(r) { return r.ok ? r.json() : []; })
-      .then(function(d) { callback(Array.isArray(d) ? d : []); })
-      .catch(function()  { callback([]); });
-    return;
-  }
-  // Local file:// — use IndexedDB for preview
+function idbGetAll(callback) {
   openMainDB(function(db) {
     if (!db) { callback([]); return; }
     var req = db.transaction('projects', 'readonly').objectStore('projects').getAll();
     req.onsuccess = function() { callback(req.result || []); };
     req.onerror   = function() { callback([]); };
   });
+}
+
+function getProjectsFromDB(callback) {
+  if (location.protocol === 'file:') {
+    // Local file:// — use IndexedDB directly
+    idbGetAll(callback);
+    return;
+  }
+  // Hosted (Netlify): try JSON first, fall back to IndexedDB
+  fetch('data/projects.json?t=' + Date.now())
+    .then(function(r) { return r.ok ? r.json() : []; })
+    .then(function(d) {
+      var data = Array.isArray(d) ? d : [];
+      if (data.length > 0) {
+        // JSON has data — use it (published/shared)
+        callback(data);
+      } else {
+        // JSON empty — fall back to this browser's IndexedDB (admin-saved)
+        idbGetAll(callback);
+      }
+    })
+    .catch(function() { idbGetAll(callback); });
 }
 
 // ── UTILS ─────────────────────────────────────────────────────
