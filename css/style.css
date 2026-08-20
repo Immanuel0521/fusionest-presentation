@@ -245,10 +245,11 @@ section { position: relative; overflow: hidden; }
 #hero-canvas {
   position: absolute; inset: 0; z-index: 0;
 }
-.hero-bg-img {
+.hero-bg {
   position: absolute; inset: 0; z-index: 0;
-  background: url('../assets/images/hero_bg.jpg') center/cover no-repeat;
-  opacity: 0.25;
+  background-size: cover; background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.35) saturate(0.8);
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;

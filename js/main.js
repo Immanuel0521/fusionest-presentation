@@ -776,7 +776,7 @@ function initModelScroll() {
   initDragScroll('models-track-wrap');
 }
 
-// ── INDEXEDDB (shared with admin) ───────────────────────────
+// ── PROJECT DATA (Netlify = fetch JSON; local = IndexedDB) ────
 var _mainDB = null;
 function openMainDB(cb) {
   if (_mainDB) { cb(_mainDB); return; }
@@ -792,6 +792,15 @@ function openMainDB(cb) {
 }
 
 function getProjectsFromDB(callback) {
+  if (location.protocol !== 'file:') {
+    // Hosted on Netlify — fetch static JSON, visible to all visitors
+    fetch('data/projects.json?t=' + Date.now())
+      .then(function(r) { return r.ok ? r.json() : []; })
+      .then(function(d) { callback(Array.isArray(d) ? d : []); })
+      .catch(function()  { callback([]); });
+    return;
+  }
+  // Local file:// — use IndexedDB for preview
   openMainDB(function(db) {
     if (!db) { callback([]); return; }
     var req = db.transaction('projects', 'readonly').objectStore('projects').getAll();
@@ -799,7 +808,6 @@ function getProjectsFromDB(callback) {
     req.onerror   = function() { callback([]); };
   });
 }
-
 
 // ── UTILS ─────────────────────────────────────────────────────
 function escHtml(str) {

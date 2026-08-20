@@ -1,5 +1,5 @@
 /* ============================================================
-   FUSIONest Admin — v4 (IndexedDB storage, no size limits)
+   FUSIONest Admin — v4 (IndexedDB + GitHub publish)
    ============================================================ */
 
 var DB_NAME   = 'fusionest_db';
@@ -10,10 +10,18 @@ var LEADS_KEY = 'fn_leads';
 var SES_KEY   = 'fn_admin_auth';
 var DEFAULT_PIN = 'fusionest';
 
+// ── GITHUB PUBLISH CONFIG ─────────────────────────────────────
+// Fill in your GitHub Personal Access Token to enable "Publish to Site"
+var GH_OWNER = 'Immanuel0521';
+var GH_REPO  = 'fusionest-presentation';
+var GH_FILE  = 'data/projects.json';
+var GH_TOKEN = ''; // ← paste your GitHub token here
+
 var _db         = null;
 var editingId   = null;
 var featuredImg = null;
 var galleryImgs = [];
+
 
 /* ── BOOT ─────────────────────────────────────────────────── */
 window.addEventListener('DOMContentLoaded', function () {
@@ -499,6 +507,63 @@ function toast(msg, type) {
   el.textContent = msg;
   el.className = 'notif ' + (type||'success') + ' show';
   setTimeout(function(){ el.classList.remove('show'); }, 3500);
+}
+
+/* ── PUBLISH TO NETLIFY VIA GITHUB API ───────────────────── */
+function publishToSite() {
+  if (!GH_TOKEN) {
+    toast('⚠ Add your GitHub token in admin.js to enable publishing.', 'error');
+    var btn = document.getElementById('publish-btn');
+    if (btn) { btn.textContent = '⚠ Token needed — see instructions'; }
+    return;
+  }
+
+  var btn = document.getElementById('publish-btn');
+  if (btn) { btn.textContent = '⏳ Publishing...'; btn.disabled = true; }
+
+  dbGetAll(function(projects) {
+    // Strip base64 images for the JSON file — store image data separately
+    // (Images are stored in IndexedDB locally; for Netlify we include them inline)
+    var jsonStr = JSON.stringify(projects, null, 2);
+    var b64     = btoa(unescape(encodeURIComponent(jsonStr)));
+
+    // First get the current SHA of the file (needed for update)
+    var apiUrl = 'https://api.github.com/repos/' + GH_OWNER + '/' + GH_REPO + '/contents/' + GH_FILE;
+    fetch(apiUrl, {
+      headers: {
+        'Authorization': 'token ' + GH_TOKEN,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(info) {
+      var sha = info.sha || undefined;
+      var body = { message: 'Update projects — ' + new Date().toLocaleString(), content: b64 };
+      if (sha) body.sha = sha;
+      return fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'token ' + GH_TOKEN,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+    })
+    .then(function(r) {
+      if (r.ok) {
+        toast('✅ Published! Netlify will update in ~1 minute.', 'success');
+        if (btn) { btn.textContent = '✅ Published to Netlify'; btn.disabled = false; }
+        setTimeout(function(){ if (btn) btn.textContent = '🌐 Publish to Site'; }, 4000);
+      } else {
+        throw new Error('GitHub API error ' + r.status);
+      }
+    })
+    .catch(function(e) {
+      toast('❌ Publish failed: ' + e.message, 'error');
+      if (btn) { btn.textContent = '🌐 Publish to Site'; btn.disabled = false; }
+    });
+  });
 }
 
 /* ── UTILS ────────────────────────────────────────────────── */

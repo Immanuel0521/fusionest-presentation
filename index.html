@@ -75,7 +75,7 @@
      HERO SECTION
 ═══════════════════════════════════════════════════════════ -->
 <section id="hero" aria-label="Hero">
-  <div class="hero-bg-img" role="img" aria-label="Cinematic architectural background"></div>
+  <div class="hero-bg" style="background-image:url('assets/images/hero_new.jpg')" aria-hidden="true"></div>
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
@@ -118,14 +118,8 @@
 <section id="about-intro" aria-labelledby="about-intro-title">
   <div class="container">
     <div class="about-intro-grid">
-      <div class="about-intro-visual reveal-left">
-        <img src="assets/images/building_exterior.jpg"
-             alt="Modern FUSIONest prefab building exterior with structural steel frame"
-             class="about-intro-img" loading="lazy" />
-        <div class="about-intro-badge">
-          <strong>23+</strong>
-          <span>Years in Prefab Construction</span>
-        </div>
+      <div class="about-img">
+        <img src="assets/images/about_building.png" alt="FUSIONest modular building" style="width:100%;border-radius:var(--r-xl);" />
       </div>
       <div class="reveal-right">
         <div class="section-label">Who We Are</div>
@@ -726,9 +720,9 @@
       </div>
       <div class="about-visual reveal-right">
         <div class="about-img-container">
-          <img src="assets/images/about_bg.jpg"
-               alt="FUSIONest engineering team and construction site"
-               loading="lazy" />
+          <img src="assets/images/wall_illustration.jpg"
+           alt="FUSIONest wall system cross-section — all 7 layers from interior to exterior"
+           style="width:100%;border-radius:var(--r-xl);display:block;" />
         </div>
         <div class="about-mission-card">
           <div class="about-mission-title">Our Mission</div>
@@ -983,14 +977,15 @@
     </div>
   </div>
 
-  <!-- Slide 07 -->
+  <!-- Slide 07 — Our Work / Projects (loaded dynamically) -->
   <div class="pres-slide" data-slide="7">
     <div class="pres-grid-bg"></div>
     <div class="pres-slide-label">Our Work</div>
-    <div class="pres-slide-title">560+ <em>Projects</em></div>
-    <div class="pres-slide-content">
-      Completed across Hyderabad and beyond.<br/>
-      Homes, Farmhouses, Resorts, Offices &amp; Commercial Spaces.
+    <div class="pres-slide-title">Our <em>Projects</em></div>
+    <div id="pres-projects-grid" class="pres-slide-grid" style="gap:16px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));margin-top:24px;">
+      <div class="pres-slide-card" style="text-align:center;color:var(--text-muted);">
+        <p>Projects appear here once added via Admin panel.</p>
+      </div>
     </div>
   </div>
 
@@ -1000,21 +995,22 @@
     <div class="pres-slide-label">Quality</div>
     <div class="pres-slide-title">Quality at Every <em>Stage</em></div>
     <div class="pres-slide-content">
-      98% client satisfaction rate. Every project, every time.<br/>
-      Engineering checks at structure, frame, MEP, insulation, board and finish stages.
+      Every project, every time — we do not compromise.<br/>
+      Checks at structure, frame, MEP, insulation, board and finish stages.
     </div>
   </div>
 
   <!-- Slide 09 -->
   <div class="pres-slide" data-slide="9">
     <div class="pres-grid-bg"></div>
-    <div class="pres-slide-label">About</div>
-    <div class="pres-slide-title">23+ Years of<br/><em>Expertise</em></div>
+    <div class="pres-slide-label">About FUSIONest</div>
+    <div class="pres-slide-title">Built on <em>Experience.</em></div>
     <div class="pres-slide-content">
-      FUSIONest has been reimagining how spaces are built — faster, smarter, and more responsibly.<br/>
-      Design. Engineering. Installation. Finishing. Handover.
+      FUSIONest — Hyderabad's trusted prefab &amp; modular construction specialist.<br/>
+      Design · Engineering · Installation · Finishing · Handover
     </div>
   </div>
+
 
   <!-- Slide 10 -->
   <div class="pres-slide" data-slide="10">
